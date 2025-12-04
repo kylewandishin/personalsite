@@ -2,6 +2,7 @@ import { Hero } from "@/components/hero"
 import { Philosophy } from "@/components/philosophy"
 import { Pillars } from "@/components/pillars"
 import { VerticalTimeline } from "@/components/vertical-timeline"
+import { FeaturedProject } from "@/components/featured-project"
 import { SelectedWork } from "@/components/selected-work"
 import { Skills } from "@/components/skills"
 import { Contact } from "@/components/contact"
@@ -19,6 +20,7 @@ export default function Home() {
       <Philosophy />
       <Pillars />
       <VerticalTimeline />
+      {/* <FeaturedProject /> */}
       <SelectedWork />
       <Skills />
       <Contact />
