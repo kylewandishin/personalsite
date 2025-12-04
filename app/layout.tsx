@@ -8,10 +8,9 @@ const _inter = Inter({ subsets: ["latin"] })
 const _jetbrainsMono = JetBrains_Mono({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Kyle Wandishin | AI/Computer Vision Engineering",
+  title: "Kyle Wandishin | Founder | AI/Computer Vision Engineering",
   description:
     "Principal, AI/Computer Vision Engineer, and Software Engineer building systems that eliminate friction and enable skilled work.",
-  generator: "v0.app",
   icons: {
     icon: [
       {
