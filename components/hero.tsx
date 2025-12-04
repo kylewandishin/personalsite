@@ -29,8 +29,33 @@ export function Hero() {
 
       <div className="relative z-10 max-w-6xl mx-auto w-full">
         <div className="grid lg:grid-cols-[1fr_auto] gap-12 lg:gap-20 items-center">
-          {/* Text content */}
-          <div className="space-y-8">
+          {/* Headshot with artistic frame - Mobile: first, Desktop: second */}
+          <div
+            className={`relative order-first lg:order-last transition-all duration-1000 delay-500 ${
+              loaded ? "opacity-100 scale-100" : "opacity-0 scale-95"
+            }`}
+          >
+            <div className="relative w-48 h-48 md:w-64 md:h-64 lg:w-80 lg:h-80 mx-auto lg:mx-0">
+              {/* Decorative elements */}
+              <div className="absolute -inset-4 border border-accent-foreground/20 rounded-full animate-pulse-glow" />
+              <div className="absolute -inset-8 border border-border rounded-full" />
+
+              {/* Main image container */}
+              <div className="relative w-full h-full rounded-full overflow-hidden border-2 border-border">
+                <Image src="/images/kyle.jpeg" alt="Kyle Wandishin" fill className="object-cover object-top" priority />
+                {/* Overlay gradient */}
+                <div className="absolute inset-0 bg-gradient-to-t from-background/40 to-transparent" />
+              </div>
+
+              {/* Floating label */}
+              <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 bg-card border border-border px-4 py-2 rounded-full">
+                <span className="text-xs font-mono text-accent-foreground">Boulder, CO</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Text content - Mobile: second, Desktop: first */}
+          <div className="space-y-8 order-last lg:order-first">
             <div
               className={`transition-all duration-1000 ${
                 loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
@@ -75,31 +100,6 @@ export function Hero() {
               >
                 Book a Call
               </a>
-            </div>
-          </div>
-
-          {/* Headshot with artistic frame */}
-          <div
-            className={`relative transition-all duration-1000 delay-500 ${
-              loaded ? "opacity-100 scale-100" : "opacity-0 scale-95"
-            }`}
-          >
-            <div className="relative w-64 h-64 md:w-80 md:h-80 mx-auto lg:mx-0">
-              {/* Decorative elements */}
-              <div className="absolute -inset-4 border border-accent-foreground/20 rounded-full animate-pulse-glow" />
-              <div className="absolute -inset-8 border border-border rounded-full" />
-
-              {/* Main image container */}
-              <div className="relative w-full h-full rounded-full overflow-hidden border-2 border-border">
-                <Image src="/images/kyle.jpeg" alt="Kyle Wandishin" fill className="object-cover object-top" priority />
-                {/* Overlay gradient */}
-                <div className="absolute inset-0 bg-gradient-to-t from-background/40 to-transparent" />
-              </div>
-
-              {/* Floating label */}
-              <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 bg-card border border-border px-4 py-2 rounded-full">
-                <span className="text-xs font-mono text-accent-foreground">Denver, CO</span>
-              </div>
             </div>
           </div>
         </div>
