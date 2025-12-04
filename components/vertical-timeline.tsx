@@ -5,15 +5,24 @@ import { MapPin, GraduationCap } from "lucide-react"
 
 const experiences = [
   {
-    year: "2023",
-    endYear: "Present",
-    company: "Arterial",
-    role: "Principal",
-    location: "Boulder, Colorado",
-    description:
-      "AI-backed GIS/Asset Manager for DOTs, automating road hazard detection with computer vision and depth modeling.",
+    year: "2021",
+    endYear: "2021",
+    company: "Comet",
+    role: "Test Automation Engineer",
+    location: "Remote",
+    description: "Automated test systems using web scraping and simulated user interactions.",
     color: "bg-accent-foreground",
-    skills: ["AI/ML", "GIS", "Computer Vision", "Leadership"],
+    skills: ["Automation", "Testing", "Web Scraping"],
+  },
+  {
+    year: "2021",
+    endYear: "2021",
+    company: "Accenture Australia",
+    role: "Developer",
+    location: "Melbourne, Australia",
+    description: "Computer vision AI model for City of Boorondara to detect illegal deforestation in real-time.",
+    color: "bg-accent-foreground/80",
+    skills: ["AI/ML", "Geospatial", "Consulting"],
   },
   {
     year: "2022",
@@ -23,7 +32,7 @@ const experiences = [
     location: "Denver, Colorado",
     description:
       "Automated processes and reduced operating costs for small to mid-market businesses through full-stack development.",
-    color: "bg-emerald-500",
+    color: "bg-accent-foreground/90",
     skills: ["Full-Stack", "Automation", "Consulting"],
   },
   {
@@ -34,7 +43,7 @@ const experiences = [
     location: "Smart Water Meters",
     description:
       "Automated testing tools using computer vision, microcontrollers, and embedded programming for QA systems.",
-    color: "bg-blue-500",
+    color: "bg-accent-foreground/85",
     skills: ["Embedded", "Computer Vision", "QA"],
   },
   {
@@ -44,28 +53,30 @@ const experiences = [
     role: "Software Engineer",
     location: "Denver, Colorado",
     description: "Clinical encyclopedia app reducing supervisor calls by 80% for hospital staff.",
-    color: "bg-amber-500",
+    color: "bg-accent-foreground/75",
     skills: ["Healthcare", "Mobile", "Full-Stack"],
   },
   {
-    year: "2021",
-    endYear: "2021",
-    company: "Accenture Australia",
-    role: "Developer",
-    location: "Melbourne, Australia",
-    description: "Computer vision AI model for City of Boorondara to detect illegal deforestation in real-time.",
-    color: "bg-rose-500",
-    skills: ["AI/ML", "Geospatial", "Consulting"],
+    year: "2023",
+    endYear: "2023",
+    company: "University of Colorado Boulder",
+    role: "Bachelor of Science, Computer Science",
+    location: "Boulder, Colorado",
+    description: "",
+    color: "bg-accent-foreground/70",
+    skills: [],
+    isEducation: true,
   },
   {
-    year: "2021",
-    endYear: "2021",
-    company: "Comet",
-    role: "Test Automation Engineer",
-    location: "Remote",
-    description: "Automated test systems using web scraping and simulated user interactions.",
-    color: "bg-purple-500",
-    skills: ["Automation", "Testing", "Web Scraping"],
+    year: "2023",
+    endYear: "Present",
+    company: "Arterial",
+    role: "Principal",
+    location: "Boulder, Colorado",
+    description:
+      "AI-backed GIS/Asset Manager for DOTs, automating road hazard detection with computer vision and depth modeling.",
+    color: "bg-accent-foreground",
+    skills: ["AI/ML", "GIS", "Computer Vision", "Leadership"],
   },
 ]
 
@@ -191,25 +202,33 @@ export function VerticalTimeline() {
                         </div>
 
                         <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                          <MapPin className="w-3 h-3" />
+                          {exp.isEducation ? (
+                            <GraduationCap className="w-3 h-3" />
+                          ) : (
+                            <MapPin className="w-3 h-3" />
+                          )}
                           {exp.location}
                         </div>
 
-                        <p className="text-sm text-muted-foreground leading-relaxed">{exp.description}</p>
+                        {exp.description && (
+                          <p className="text-sm text-muted-foreground leading-relaxed">{exp.description}</p>
+                        )}
 
-                        <div className="flex flex-wrap gap-2 pt-2">
-                          {exp.skills.map((skill, skillIndex) => (
-                            <span
-                              key={skill}
-                              className={`px-2 py-1 text-xs font-mono bg-muted text-muted-foreground rounded transition-all duration-500 ${
-                                isRevealed ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-                              }`}
-                              style={{ transitionDelay: `${400 + skillIndex * 50}ms` }}
-                            >
-                              {skill}
-                            </span>
-                          ))}
-                        </div>
+                        {exp.skills && exp.skills.length > 0 && (
+                          <div className="flex flex-wrap gap-2 pt-2">
+                            {exp.skills.map((skill, skillIndex) => (
+                              <span
+                                key={skill}
+                                className={`px-2 py-1 text-xs font-mono bg-muted text-muted-foreground rounded transition-all duration-500 ${
+                                  isRevealed ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+                                }`}
+                                style={{ transitionDelay: `${400 + skillIndex * 50}ms` }}
+                              >
+                                {skill}
+                              </span>
+                            ))}
+                          </div>
+                        )}
                       </div>
                     </div>
                   </div>
@@ -218,41 +237,6 @@ export function VerticalTimeline() {
             })}
           </div>
 
-          {/* Education - at the end of timeline */}
-          <div
-            ref={(el) => {
-              itemRefs.current[experiences.length] = el
-            }}
-            className={`relative mt-24 transition-all duration-700 ${
-              revealedItems.has(experiences.length) ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-            }`}
-          >
-            {/* Final dot */}
-            <div
-              className={`absolute left-0 md:left-1/2 md:-translate-x-1/2 z-10 transition-all duration-700 ${
-                revealedItems.has(experiences.length) ? "opacity-100 scale-100" : "opacity-0 scale-0"
-              }`}
-            >
-              <div className="w-6 h-6 rounded-full bg-accent-foreground ring-4 ring-background flex items-center justify-center">
-                <GraduationCap className="w-3 h-3 text-background" />
-              </div>
-            </div>
-
-            {/* Education card */}
-            <div className="pl-12 md:pl-0 md:flex md:justify-center">
-              <div className="p-6 rounded-2xl border border-border bg-card md:max-w-md">
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-full bg-accent-foreground/10 flex items-center justify-center">
-                    <GraduationCap className="w-6 h-6 text-accent-foreground" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-foreground">University of Colorado Boulder</h3>
-                    <p className="text-sm text-muted-foreground">Bachelor of Science, Computer Science</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </section>

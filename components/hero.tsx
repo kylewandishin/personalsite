@@ -105,14 +105,14 @@ export function Hero() {
         </div>
 
         {/* Scroll indicator */}
-        <div
+        {/* <div
           className={`absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 transition-all duration-1000 delay-700 ${
             loaded ? "opacity-100" : "opacity-0"
           }`}
         >
           <span className="text-xs text-muted-foreground uppercase tracking-widest">Scroll</span>
           <div className="w-px h-12 bg-gradient-to-b from-muted-foreground to-transparent" />
-        </div>
+        </div> */}
       </div>
     </section>
   )
