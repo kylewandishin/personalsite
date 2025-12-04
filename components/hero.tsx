@@ -31,7 +31,7 @@ export function Hero() {
         <div className="grid lg:grid-cols-[1fr_auto] gap-12 lg:gap-20 items-center">
           {/* Headshot with artistic frame - Mobile: first, Desktop: second */}
           <div
-            className={`relative order-first lg:order-last transition-all duration-1000 delay-500 ${
+            className={`relative order-first lg:order-last mb-12 lg:mb-0 transition-all duration-1000 delay-500 ${
               loaded ? "opacity-100 scale-100" : "opacity-0 scale-95"
             }`}
           >
@@ -48,7 +48,7 @@ export function Hero() {
               </div>
 
               {/* Floating label */}
-              <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 bg-card border border-border px-4 py-2 rounded-full">
+              <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 bg-card border border-border px-4 py-2 rounded-full whitespace-nowrap">
                 <span className="text-xs font-mono text-accent-foreground">Boulder, CO</span>
               </div>
             </div>
