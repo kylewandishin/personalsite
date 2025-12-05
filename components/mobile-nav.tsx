@@ -14,8 +14,11 @@ export function MobileNav() {
   const [activeSection, setActiveSection] = useState("")
   const [hasInteracted, setHasInteracted] = useState(false)
   const [isVisible, setIsVisible] = useState(false)
+  const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
+    setMounted(true)
+    
     const handleInteraction = () => {
       setHasInteracted(true)
     }
@@ -64,7 +67,7 @@ export function MobileNav() {
     }
   }
 
-  if (!hasInteracted) {
+  if (!mounted || !hasInteracted) {
     return null
   }
 

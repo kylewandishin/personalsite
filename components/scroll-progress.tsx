@@ -4,8 +4,11 @@ import { useEffect, useState } from "react"
 
 export function ScrollProgress() {
   const [progress, setProgress] = useState(0)
+  const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
+    setMounted(true)
+    
     const handleScroll = () => {
       const totalHeight = document.documentElement.scrollHeight - window.innerHeight
       const scrollPosition = window.scrollY
@@ -13,7 +16,10 @@ export function ScrollProgress() {
       setProgress(currentProgress)
     }
 
-    window.addEventListener("scroll", handleScroll)
+    // Initial check
+    handleScroll()
+    
+    window.addEventListener("scroll", handleScroll, { passive: true })
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 

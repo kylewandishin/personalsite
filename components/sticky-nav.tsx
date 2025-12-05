@@ -13,8 +13,11 @@ const navItems = [
 export function StickyNav() {
   const [isVisible, setIsVisible] = useState(false)
   const [activeSection, setActiveSection] = useState("")
+  const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
+    setMounted(true)
+    
     const handleScroll = () => {
       setIsVisible(window.scrollY > 400)
 
@@ -32,7 +35,10 @@ export function StickyNav() {
       }
     }
 
-    window.addEventListener("scroll", handleScroll)
+    // Initial check
+    handleScroll()
+    
+    window.addEventListener("scroll", handleScroll, { passive: true })
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
