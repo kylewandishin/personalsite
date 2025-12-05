@@ -16,21 +16,21 @@ const pillars = [
     title: "Cloud Infrastructure",
     subtitle: "& Systems Engineering",
     description:
-      "Designing edge data capture systems and cost-efficient cloud deployments for high-volume inference, enabling scalable solutions across millions of square feet.",
+      "Designing edge data capture systems and cost-efficient data pipelines for high-volume inference, enabling scalable solutions across industries and enterprises.",
   },
   {
     icon: Layers,
     title: "ERP/CRM Integrations",
     subtitle: "& Automation",
     description:
-      "Unifying platforms like Salesforce, HubSpot, Azure, Oracle into cohesive ecosystems that improve clarity and accelerate decision-making.",
+      "Unifying platforms like Salesforce, HubSpot, Epicor, Oracle, and more into cohesive ecosystems that improve clarity and accelerate decision-making across organizations.",
   },
   {
     icon: Rocket,
     title: "Startup Leadership",
     subtitle: "& Product",
     description:
-      "Leading Arterial to develop AI-backed infrastructure intelligence tools for local and state governments, driving significant operational improvements.",
+      "Leading Arterial to develop AI-backed infrastructure intelligence tools for local and state governments, driving significant operational improvements and massive cost savings.",
   },
 ]
 
