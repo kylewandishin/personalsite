@@ -126,7 +126,7 @@ export function VerticalTimeline() {
     <section id="experience" ref={sectionRef} className="relative py-32 overflow-hidden">
       <div className="absolute left-0 top-0 w-full h-px bg-gradient-to-r from-transparent via-border to-transparent" />
 
-      <div className="px-6 max-w-4xl mx-auto lg:ml-[200px]">
+      <div className="px-6 max-w-4xl mx-auto lg:ml-[200px] 2xl:mx-auto">
         {/* Header */}
         <div className="mb-20">
           <span className="inline-block text-accent-foreground font-mono text-xs uppercase tracking-widest mb-4">

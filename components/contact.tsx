@@ -35,7 +35,7 @@ export function Contact() {
     <section id="contact" className="relative px-6 py-32 overflow-hidden">
       <div className="absolute left-0 top-0 w-full h-px bg-gradient-to-r from-transparent via-border to-transparent" />
 
-      <div className="max-w-6xl mx-auto lg:ml-[200px]">
+      <div className="max-w-6xl mx-auto lg:ml-[200px] 2xl:mx-auto">
         <AnimatedSection>
           <span className="inline-block text-accent-foreground font-mono text-xs uppercase tracking-widest mb-4">
             Contact

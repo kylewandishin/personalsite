@@ -8,7 +8,7 @@ export function Philosophy() {
       {/* Decorative line */}
       <div className="absolute left-0 top-0 w-full h-px bg-gradient-to-r from-transparent via-border to-transparent" />
 
-      <div className="max-w-4xl mx-auto lg:ml-[200px] space-y-12">
+      <div className="max-w-4xl mx-auto lg:ml-[200px] 2xl:mx-auto space-y-12">
         <AnimatedSection>
           <span className="inline-block text-accent-foreground font-mono text-xs uppercase tracking-widest mb-8">
             Philosophy

@@ -27,7 +27,7 @@ export function Hero() {
         />
       </div>
 
-      <div className="relative z-10 max-w-6xl mx-auto w-full">
+      <div className="relative z-10 max-w-6xl mx-auto lg:ml-[200px] 2xl:mx-auto w-full">
         <div className="grid lg:grid-cols-[1fr_auto] gap-12 lg:gap-20 items-center">
           {/* Headshot with artistic frame - Mobile: first, Desktop: second */}
           <div
