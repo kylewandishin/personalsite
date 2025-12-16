@@ -7,7 +7,7 @@ import "./globals.css"
 const _inter = Inter({ subsets: ["latin"] })
 const _jetbrainsMono = JetBrains_Mono({ subsets: ["latin"] })
 
-const siteUrl = "https://kylewandishin.com"
+const siteUrl = "https://kyle.wandishin.com"
 const title =
   "Kyle Wandishin | Founder • AI/Computer Vision Engineering • Arterial"
 const description =
