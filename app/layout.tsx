@@ -1,81 +1,58 @@
 import type React from "react"
-import type { Metadata } from "next"
+import type { Metadata, Viewport } from "next"
 import { Inter, JetBrains_Mono } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
+import { JsonLd } from "@/components/json-ld"
+import { PROFILE_LINKS, SITE_URL, person, seo, siteJsonLd } from "@/lib/person"
 import "./globals.css"
 
-const _inter = Inter({ subsets: ["latin"] })
-const _jetbrainsMono = JetBrains_Mono({ subsets: ["latin"] })
-
-const siteUrl = "https://kyle.wandishin.com"
-const title =
-  "Kyle Wandishin | Founder • AI/Computer Vision Engineering • Arterial"
-const description =
-  "Kyle Wandishin—Founder of Arterial and CU Boulder Computer Science alum—is a principal AI and computer vision engineer delivering applied ML, perception systems, and product-led software in Colorado and beyond."
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" })
+const jetbrainsMono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-jetbrains-mono", display: "swap" })
 
 export const metadata: Metadata = {
-  metadataBase: new URL(siteUrl),
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: title,
-    template: "%s | Kyle Wandishin",
+    default: seo.title,
+    template: `%s | ${person.name}`,
   },
-  description,
-  applicationName: "Kyle Wandishin",
-  keywords: [
-    "Kyle Wandishin",
-    "Arterial",
-    "CU Boulder",
-    "University of Colorado Boulder",
-    "Colorado AI engineer",
-    "Colorado computer vision",
-    "AI founder",
-    "AI strategy",
-    "computer vision engineering",
-    "applied machine learning",
-    "product engineering",
-    "software engineer",
-  ],
-  authors: [{ name: "Kyle Wandishin" }],
-  creator: "Kyle Wandishin",
-  publisher: "Kyle Wandishin",
-  category: "Technology",
+  description: seo.description,
+  applicationName: person.name,
+  authors: [{ name: person.name, url: `${SITE_URL}/` }],
+  creator: person.name,
+  publisher: person.name,
   alternates: {
     canonical: "/",
   },
   openGraph: {
-    title,
-    description,
-    url: siteUrl,
-    siteName: "Kyle Wandishin",
+    type: "profile",
+    firstName: person.givenName,
+    lastName: person.familyName,
+    username: "kylewandishin",
+    title: seo.title,
+    description: seo.description,
+    url: SITE_URL,
+    siteName: person.name,
     locale: "en_US",
-    type: "website",
-    images: [
-      {
-        url: `${siteUrl}/images/kyle.jpeg`,
-        width: 1200,
-        height: 630,
-        alt: "Portrait of Kyle Wandishin, Founder and AI/Computer Vision Engineer",
-      },
-    ],
+    // og:image comes from app/opengraph-image.jpg (Next.js file convention).
   },
   twitter: {
     card: "summary_large_image",
-    title,
-    description,
-    images: [`${siteUrl}/images/kyle.jpeg`],
+    title: seo.title,
+    description: seo.description,
   },
   robots: {
     index: true,
     follow: true,
+    googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 },
   },
   icons: {
-    icon: [
-      {
-        url: "/icon.svg",
-        type: "image/svg+xml",
-      },
-    ],
+    icon: [{ url: "/icon.svg", type: "image/svg+xml" }],
   },
+}
+
+export const viewport: Viewport = {
+  themeColor: "#020509",
+  colorScheme: "dark",
 }
 
 export default function RootLayout({
@@ -84,8 +61,15 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
-      <body className={`font-sans antialiased`} suppressHydrationWarning>
+    <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable}`}>
+      <head>
+        {/* rel="me" ties these profiles to this site as the same person. */}
+        <link rel="me" href={PROFILE_LINKS.wikidata} />
+        <link rel="me" href={PROFILE_LINKS.linkedin} />
+        <link rel="me" href={PROFILE_LINKS.github} />
+        <JsonLd data={siteJsonLd} />
+      </head>
+      <body className="font-sans antialiased" suppressHydrationWarning>
         {children}
         <Analytics />
       </body>

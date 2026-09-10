@@ -1,36 +1,41 @@
 "use client"
 
-import { Eye, Cloud, Layers, Rocket } from "lucide-react"
+import { Box, Cpu, Eye, Layers } from "lucide-react"
 import { AnimatedSection } from "./animated-section"
+import { arterial } from "@/lib/person"
 
 const pillars = [
   {
     icon: Eye,
-    title: "AI Computer Vision",
-    subtitle: "& Depth Modeling",
+    title: "Computer Vision",
+    href: arterial.pages.services,
+    subtitle: "& Infrastructure Intelligence",
     description:
-      "Building computer vision and monocular depth systems for governments and enterprises, transforming raw imagery into reliable, actionable infrastructure intelligence.",
+      "Detection models that find potholes, field assets, and 1,000+ MUTCD sign types in ordinary dashcam footage, then rank what matters so crews know what to fix first.",
   },
   {
-    icon: Cloud,
-    title: "Cloud Infrastructure",
-    subtitle: "& Systems Engineering",
+    icon: Box,
+    title: "3D Reconstruction",
+    href: arterial.pages.elidar,
+    subtitle: "& Depth Modeling",
     description:
-      "Designing edge data capture systems and cost-efficient data pipelines for high-volume inference, enabling scalable solutions across industries and enterprises.",
+      "Monocular depth and 3D reconstruction (Arterial's E-LiDAR) that turn 2D video into survey-grade measurements, so every detection carries real dimensions, not just a pin on a map.",
+  },
+  {
+    icon: Cpu,
+    title: "Edge Hardware",
+    href: arterial.pages.coverage,
+    subtitle: "& Data Pipelines",
+    description:
+      "ARTIE™, a self-installing fleet camera, feeding cost-efficient pipelines built for high-volume inference across entire municipal fleets.",
   },
   {
     icon: Layers,
-    title: "ERP/CRM Integrations",
+    title: "Integrations",
+    href: arterial.pages.integrations,
     subtitle: "& Automation",
     description:
-      "Unifying platforms like Salesforce, HubSpot, Epicor, Oracle, and more into cohesive ecosystems that improve clarity and accelerate decision-making across organizations.",
-  },
-  {
-    icon: Rocket,
-    title: "Startup Leadership",
-    subtitle: "& Product",
-    description:
-      "Leading Arterial to develop AI-backed infrastructure intelligence tools for local and state governments, driving significant operational improvements and massive cost savings.",
+      "Connecting detections to the work-order, GIS, and asset systems agencies already run, backed by years of ERP/CRM integration work across Salesforce, HubSpot, Oracle, and Epicor.",
   },
 ]
 
@@ -41,9 +46,9 @@ export function Pillars() {
 
       <div className="max-w-6xl mx-auto lg:ml-[200px] 2xl:mx-auto">
         <AnimatedSection>
-          <span className="inline-block text-accent-foreground font-mono text-xs uppercase tracking-widest mb-16">
+          <h2 className="inline-block text-accent-foreground font-mono text-xs uppercase tracking-widest mb-16">
             What I Do
-          </span>
+          </h2>
         </AnimatedSection>
 
         <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
@@ -64,6 +69,13 @@ export function Pillars() {
                   </div>
 
                   <p className="text-muted-foreground text-sm leading-relaxed">{pillar.description}</p>
+
+                  <a
+                    href={pillar.href}
+                    className="inline-flex items-center gap-1 text-xs font-mono text-accent-foreground hover:underline underline-offset-4"
+                  >
+                    How Arterial does it →
+                  </a>
                 </div>
 
                 {/* Hover line effect */}

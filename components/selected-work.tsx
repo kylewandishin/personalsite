@@ -1,21 +1,33 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { ArrowUpRight, X } from "lucide-react"
 import { AnimatedSection } from "./animated-section"
 
-const projects = [
+type Project = {
+  title: string
+  client: string
+  category: string
+  problem: string
+  approach: string
+  stack: string[]
+  impact: string
+  link?: string
+}
+
+const projects: Project[] = [
   {
-    title: "Road Hazard Detection Pipeline",
-    client: "Government DOTs",
+    title: "Arterial Infrastructure Intelligence",
+    client: "Cities & state DOTs",
     category: "AI/ML",
     problem:
-      "Departments of transportation lacked efficient methods to detect and prioritize road hazards across large networks.",
+      "Public works agencies rely on manual inspections and surveys that go stale within months, so most road issues surface only when residents report them.",
     approach:
-      "Developed an AI-backed GIS/Asset Manager using computer vision and depth modeling to automate road hazard detection.",
-    stack: ["Python", "TensorFlow", "GIS APIs", "Cloud Infrastructure"],
+      "Self-installing ARTIE™ cameras on existing fleet vehicles feed computer vision and E-LiDAR 3D reconstruction. Detections are enriched with context and ranked into prioritized work orders.",
+    stack: ["Python", "TensorFlow", "Computer Vision", "Depth Estimation", "GIS", "Edge Hardware"],
     impact:
-      "Automated detection of potholes, cracks, and barrier damage displayed on actionable asset-management dashboards.",
+      "A paid pilot with the City of Boulder, and a 2026 Connected Colorado (C²) Challenge award to deploy with Lakewood and Loveland.",
+    link: "https://arterial.us/",
   },
   {
     title: "Clinical Encyclopedia App",
@@ -29,7 +41,7 @@ const projects = [
   },
   {
     title: "Deforestation Detection",
-    client: "City of Boorondara",
+    client: "City of Boroondara",
     category: "AI/ML",
     problem: "Local officials struggled to identify illegal deforestation in real-time across large geographic areas.",
     approach: "Computer vision AI model for real-time deforestation detection and monitoring.",
@@ -49,6 +61,13 @@ const projects = [
 
 export function SelectedWork() {
   const [selectedProject, setSelectedProject] = useState<number | null>(null)
+
+  useEffect(() => {
+    if (selectedProject === null) return
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setSelectedProject(null)
+    window.addEventListener("keydown", onKey)
+    return () => window.removeEventListener("keydown", onKey)
+  }, [selectedProject])
 
   return (
     <section id="projects" className="relative px-6 py-32 overflow-hidden">
@@ -81,7 +100,7 @@ export function SelectedWork() {
                 </h3>
                 <p className="text-sm text-muted-foreground mb-4">{project.client}</p>
 
-                <p className="text-sm text-muted-foreground line-clamp-2">{project.problem}</p>
+                <p className="text-sm text-muted-foreground line-clamp-2">{project.impact}</p>
               </button>
             </AnimatedSection>
           ))}
@@ -95,6 +114,9 @@ export function SelectedWork() {
           onClick={() => setSelectedProject(null)}
         >
           <div
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="project-dialog-title"
             className="relative w-full max-w-2xl max-h-[80vh] overflow-y-auto bg-card border border-border rounded-2xl p-8 animate-fade-up"
             onClick={(e) => e.stopPropagation()}
           >
@@ -110,7 +132,9 @@ export function SelectedWork() {
               {projects[selectedProject].category}
             </span>
 
-            <h3 className="text-2xl font-bold text-foreground mb-2">{projects[selectedProject].title}</h3>
+            <h3 id="project-dialog-title" className="text-2xl font-bold text-foreground mb-2">
+              {projects[selectedProject].title}
+            </h3>
             <p className="text-accent-foreground mb-8">{projects[selectedProject].client}</p>
 
             <div className="space-y-6">
@@ -139,6 +163,16 @@ export function SelectedWork() {
                 <h4 className="text-xs font-mono uppercase tracking-wider text-accent-foreground mb-2">Impact</h4>
                 <p className="text-foreground font-medium">{projects[selectedProject].impact}</p>
               </div>
+
+              {projects[selectedProject].link && (
+                <a
+                  href={projects[selectedProject].link}
+                  className="inline-flex items-center gap-2 text-sm font-mono text-accent-foreground hover:underline underline-offset-4"
+                >
+                  Learn more at arterial.us
+                  <ArrowUpRight className="w-4 h-4" />
+                </a>
+              )}
             </div>
           </div>
         </div>

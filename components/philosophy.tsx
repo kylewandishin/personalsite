@@ -1,5 +1,6 @@
 "use client"
 
+import Link from "next/link"
 import { AnimatedSection } from "./animated-section"
 
 export function Philosophy() {
@@ -10,9 +11,9 @@ export function Philosophy() {
 
       <div className="max-w-4xl mx-auto lg:ml-[200px] 2xl:mx-auto space-y-12">
         <AnimatedSection>
-          <span className="inline-block text-accent-foreground font-mono text-xs uppercase tracking-widest mb-8">
+          <h2 className="inline-block text-accent-foreground font-mono text-xs uppercase tracking-widest mb-8">
             Philosophy
-          </span>
+          </h2>
         </AnimatedSection>
 
         <AnimatedSection delay={100}>
@@ -34,11 +35,21 @@ export function Philosophy() {
 
           <AnimatedSection delay={300}>
             <p>
-              Today, I operate at the intersection of <span className="text-foreground font-medium">AI</span>,{" "}
-              <span className="text-foreground font-medium">automation</span>, and{" "}
-              <span className="text-foreground font-medium">large-scale systems engineering</span>—all with the same
-              goal: to eliminate the manual drudgery that slows down organizations and municipalities worldwide.
+              Today I put that into practice as co-founder and CTO of{" "}
+              <a href="https://arterial.us/" className="text-foreground font-medium hover:text-accent-foreground transition-colors">
+                Arterial
+              </a>
+              . We work where <span className="text-foreground font-medium">computer vision</span>,{" "}
+              <span className="text-foreground font-medium">edge hardware</span>, and{" "}
+              <span className="text-foreground font-medium">large-scale data systems</span> meet, so public works crews
+              can spend their time fixing roads instead of hunting for what&apos;s broken.
             </p>
+          </AnimatedSection>
+
+          <AnimatedSection delay={400}>
+            <Link href="/about" className="inline-flex items-center gap-2 text-sm font-mono text-accent-foreground hover:underline underline-offset-4">
+              Full bio and background →
+            </Link>
           </AnimatedSection>
         </div>
       </div>

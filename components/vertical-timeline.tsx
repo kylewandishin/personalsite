@@ -3,7 +3,20 @@
 import { useRef, useEffect, useState } from "react"
 import { MapPin, GraduationCap } from "lucide-react"
 
-const experiences = [
+type TimelineItem = {
+  year: string
+  endYear: string
+  company: string
+  url?: string
+  role: string
+  location: string
+  description: string
+  color: string
+  skills: string[]
+  isEducation?: boolean
+}
+
+const experiences: TimelineItem[] = [
   {
     year: "2021",
     endYear: "2021",
@@ -18,20 +31,20 @@ const experiences = [
     year: "2021",
     endYear: "2021",
     company: "Accenture Australia",
-    role: "Developer",
+    role: "Developer Intern",
     location: "Melbourne, Australia",
-    description: "Computer vision AI model for City of Boorondara to detect illegal deforestation in real-time.",
+    description: "Computer vision model for the City of Boroondara to detect illegal deforestation in real time.",
     color: "bg-accent-foreground/80",
     skills: ["AI/ML", "Geospatial", "Consulting"],
   },
   {
     year: "2022",
-    endYear: "Present",
+    endYear: "2025",
     company: "14FourTech",
     role: "Founder",
     location: "Denver, Colorado",
     description:
-      "Automated processes and reduced operating costs for small to mid-market businesses through full-stack development.",
+      "Software and workflow automation that cut operating costs for small and mid-market businesses and non-profits.",
     color: "bg-accent-foreground/90",
     skills: ["Full-Stack", "Automation", "Consulting"],
   },
@@ -40,9 +53,9 @@ const experiences = [
     endYear: "2025",
     company: "Metron Farnier",
     role: "Automation Engineer",
-    location: "Smart Water Meters",
+    location: "Louisville, Colorado",
     description:
-      "Automated testing tools using computer vision, microcontrollers, and embedded programming for QA systems.",
+      "QA and monitoring tools for smart water meters, built with computer vision, microcontrollers, and embedded programming.",
     color: "bg-accent-foreground/85",
     skills: ["Embedded", "Computer Vision", "QA"],
   },
@@ -52,15 +65,15 @@ const experiences = [
     company: "UCHealth",
     role: "Software Engineer",
     location: "Denver, Colorado",
-    description: "Clinical encyclopedia app reducing supervisor calls by 80% for hospital staff.",
+    description: "Clinical encyclopedia app that cut unnecessary calls to supervisors by up to 80%.",
     color: "bg-accent-foreground/75",
     skills: ["Healthcare", "Mobile", "Full-Stack"],
   },
   {
     year: "2023",
-    endYear: "2023",
+    endYear: "",
     company: "University of Colorado Boulder",
-    role: "Bachelor of Science, Computer Science",
+    role: "Computer Science",
     location: "Boulder, Colorado",
     description: "",
     color: "bg-accent-foreground/70",
@@ -68,15 +81,16 @@ const experiences = [
     isEducation: true,
   },
   {
-    year: "2023",
+    year: "2024",
     endYear: "Present",
     company: "Arterial",
-    role: "Principal",
+    url: "https://arterial.us/",
+    role: "Co-founder & CTO",
     location: "Boulder, Colorado",
     description:
-      "AI-backed GIS/Asset Manager for DOTs, automating road hazard detection with computer vision and depth modeling.",
+      "Leading technology for a roadway infrastructure intelligence platform: self-installing fleet cameras, computer vision, E-LiDAR 3D reconstruction, and prioritized work orders for cities and DOTs.",
     color: "bg-accent-foreground",
-    skills: ["AI/ML", "GIS", "Computer Vision", "Leadership"],
+    skills: ["Computer Vision", "3D Reconstruction", "Edge Hardware", "Leadership"],
   },
 ]
 
@@ -178,7 +192,7 @@ export function VerticalTimeline() {
                     style={{ transitionDelay: "100ms" }}
                   >
                     <span className="font-mono text-2xl md:text-3xl text-foreground font-bold">{exp.year}</span>
-                    {exp.endYear !== exp.year && (
+                    {exp.endYear && exp.endYear !== exp.year && (
                       <span className="font-mono text-lg md:text-xl text-muted-foreground ml-2">— {exp.endYear}</span>
                     )}
                   </div>
@@ -198,7 +212,13 @@ export function VerticalTimeline() {
                           <h3 className="text-xl font-semibold text-foreground group-hover:text-accent-foreground transition-colors">
                             {exp.role}
                           </h3>
-                          <p className="text-accent-foreground font-medium">{exp.company}</p>
+                          {exp.url ? (
+                            <a href={exp.url} className="text-accent-foreground font-medium hover:underline underline-offset-4">
+                              {exp.company}
+                            </a>
+                          ) : (
+                            <p className="text-accent-foreground font-medium">{exp.company}</p>
+                          )}
                         </div>
 
                         <div className="flex items-center gap-2 text-xs text-muted-foreground">
