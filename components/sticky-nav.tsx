@@ -2,28 +2,27 @@
 
 import { useEffect, useState } from "react"
 import { Github, Linkedin, Mail } from "lucide-react"
+import { PROFILE_LINKS, person } from "@/lib/person"
 
 const navItems = [
   { label: "About", href: "#about" },
+  { label: "Arterial", href: "#arterial" },
   { label: "Experience", href: "#experience" },
-  { label: "Projects", href: "#projects" },
+  { label: "Work", href: "#projects" },
   { label: "Contact", href: "#contact" },
 ]
 
 export function StickyNav() {
   const [isVisible, setIsVisible] = useState(false)
   const [activeSection, setActiveSection] = useState("")
-  const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
-    setMounted(true)
-    
     const handleScroll = () => {
       setIsVisible(window.scrollY > 400)
 
       // Determine active section
-      const sections = ["about", "experience", "projects", "contact"]
-      for (const section of sections.reverse()) {
+      const sections = navItems.map((item) => item.href.slice(1))
+      for (const section of [...sections].reverse()) {
         const element = document.getElementById(section)
         if (element) {
           const rect = element.getBoundingClientRect()
@@ -72,14 +71,14 @@ export function StickyNav() {
       </div>
       <div className="mt-8 flex flex-col gap-3">
         <a
-          href="mailto:kyle@arterial.us"
+          href={`mailto:${person.email}`}
           className="text-muted-foreground hover:text-accent-foreground transition-colors"
           aria-label="Email"
         >
           <Mail className="w-4 h-4" />
         </a>
         <a
-          href="https://www.linkedin.com/in/kylewandishin"
+          href={PROFILE_LINKS.linkedin}
           target="_blank"
           rel="noopener noreferrer"
           className="text-muted-foreground hover:text-accent-foreground transition-colors"
@@ -88,7 +87,7 @@ export function StickyNav() {
           <Linkedin className="w-4 h-4" />
         </a>
         <a
-          href="https://github.com/kylewandishin"
+          href={PROFILE_LINKS.github}
           target="_blank"
           rel="noopener noreferrer"
           className="text-muted-foreground hover:text-accent-foreground transition-colors"

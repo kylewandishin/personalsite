@@ -1,8 +1,9 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { ArrowDown } from "lucide-react"
+import { ArrowUpRight } from "lucide-react"
 import Image from "next/image"
+import { PROFILE_LINKS, arterial, person } from "@/lib/person"
 
 export function Hero() {
   const [loaded, setLoaded] = useState(false)
@@ -42,7 +43,14 @@ export function Hero() {
 
               {/* Main image container */}
               <div className="relative w-full h-full rounded-full overflow-hidden border-2 border-border">
-                <Image src="/images/kyle.jpeg" alt="Kyle Wandishin" fill className="object-cover object-top" priority />
+                <Image
+                  src={person.headshot}
+                  alt="Kyle Wandishin, co-founder and CTO of Arterial"
+                  fill
+                  sizes="(min-width: 1024px) 320px, (min-width: 768px) 256px, 192px"
+                  className="object-cover object-top"
+                  priority
+                />
                 {/* Overlay gradient */}
                 <div className="absolute inset-0 bg-gradient-to-t from-background/40 to-transparent" />
               </div>
@@ -62,10 +70,13 @@ export function Hero() {
               }`}
             >
               <p className="text-accent-foreground font-mono text-sm tracking-wider mb-4">
-                Principal / AI Engineer / Builder
+                {person.shortTitle} ·{" "}
+                <a href={arterial.url} className="underline-offset-4 hover:underline">
+                  Arterial
+                </a>
               </p>
               <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-foreground leading-[0.9]">
-                Kyle
+                Kyle{" "}
                 <br />
                 <span className="text-muted-foreground">Wandishin</span>
               </h1>
@@ -76,8 +87,12 @@ export function Hero() {
                 loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
               }`}
             >
-              Building systems that remove friction and let people focus on{" "}
-              <span className="text-foreground">skilled work</span>—not tedious, repetitive, or avoidable tasks.
+              I build{" "}
+              <a href={arterial.url} className="text-foreground underline decoration-accent-foreground/50 underline-offset-4 hover:decoration-accent-foreground">
+                Arterial
+              </a>
+              , which turns the vehicles cities already drive into passive road inspectors and gives public works teams a{" "}
+              <span className="text-foreground">living, survey-grade inventory</span> of their infrastructure.
             </p>
 
             <div
@@ -86,14 +101,14 @@ export function Hero() {
               }`}
             >
               <a
-                href="#about"
+                href={arterial.url}
                 className="group inline-flex items-center gap-2 px-6 py-3 bg-foreground text-background font-medium rounded-full hover:bg-accent-foreground transition-colors"
               >
-                Explore My Work
-                <ArrowDown className="w-4 h-4 group-hover:translate-y-1 transition-transform" />
+                Visit Arterial
+                <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
               </a>
               <a
-                href="https://arterial.us/book/kyle"
+                href={PROFILE_LINKS.arterialBooking}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-6 py-3 border border-border text-foreground font-medium rounded-full hover:border-accent-foreground hover:text-accent-foreground transition-colors"
@@ -104,15 +119,6 @@ export function Hero() {
           </div>
         </div>
 
-        {/* Scroll indicator */}
-        {/* <div
-          className={`absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 transition-all duration-1000 delay-700 ${
-            loaded ? "opacity-100" : "opacity-0"
-          }`}
-        >
-          <span className="text-xs text-muted-foreground uppercase tracking-widest">Scroll</span>
-          <div className="w-px h-12 bg-gradient-to-b from-muted-foreground to-transparent" />
-        </div> */}
       </div>
     </section>
   )

@@ -1,38 +1,39 @@
 "use client"
 
-import { Mail, Phone, Linkedin, Calendar, ArrowUpRight } from "lucide-react"
+import { Mail, Phone, Linkedin, Globe, ArrowUpRight } from "lucide-react"
 import { AnimatedSection } from "./animated-section"
+import { PROFILE_LINKS, arterial, person } from "@/lib/person"
 
 const contactLinks = [
   {
     icon: Mail,
     label: "Email",
-    value: "kyle@arterial.us",
-    href: "mailto:kyle@arterial.us",
+    value: person.email,
+    href: `mailto:${person.email}`,
   },
   {
     icon: Phone,
     label: "Phone",
-    value: "(720) 800-2900",
-    href: "tel:7208002900",
+    value: person.phoneDisplay,
+    href: `tel:${person.phone}`,
   },
   {
     icon: Linkedin,
     label: "LinkedIn",
-    value: "kylewandishin",
-    href: "https://www.linkedin.com/in/kylewandishin",
+    value: "in/kylewandishin",
+    href: PROFILE_LINKS.linkedin,
   },
   {
-    icon: Calendar,
-    label: "Book a Call",
-    value: "Calendly",
-    href: "https://arterial.us/book/kyle",
+    icon: Globe,
+    label: "Arterial",
+    value: "arterial.us",
+    href: arterial.url,
   },
 ]
 
 export function Contact() {
   return (
-    <section id="contact" className="relative px-6 py-32 overflow-hidden">
+    <section id="contact" className="relative px-6 pt-32 pb-20 overflow-hidden">
       <div className="absolute left-0 top-0 w-full h-px bg-gradient-to-r from-transparent via-border to-transparent" />
 
       <div className="max-w-6xl mx-auto lg:ml-[200px] 2xl:mx-auto">
@@ -50,7 +51,7 @@ export function Contact() {
             </h2>
 
             <a
-              href="https://arterial.us/book/kyle"
+              href={PROFILE_LINKS.arterialBooking}
               target="_blank"
               rel="noopener noreferrer"
               className="group inline-flex items-center gap-3 mt-8 px-8 py-4 bg-foreground text-background font-medium rounded-full hover:bg-accent-foreground transition-colors"
@@ -67,7 +68,7 @@ export function Contact() {
                   key={link.label}
                   href={link.href}
                   target={link.href.startsWith("http") ? "_blank" : undefined}
-                  rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                  rel={link.href.startsWith("http") ? "noopener" : undefined}
                   className="group flex items-center justify-between p-6 rounded-xl border border-border hover:border-accent-foreground/30 hover:bg-card transition-all duration-300"
                 >
                   <div className="flex items-center gap-4">
@@ -86,13 +87,6 @@ export function Contact() {
           </AnimatedSection>
         </div>
 
-        {/* Footer */}
-        <AnimatedSection delay={300}>
-          <footer className="mt-32 pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-muted-foreground">
-            <p>© {new Date().getFullYear()} Kyle Wandishin. Built with thoughtful engineering.</p>
-            <p className="font-mono text-xs">Boulder, CO</p>
-          </footer>
-        </AnimatedSection>
       </div>
     </section>
   )

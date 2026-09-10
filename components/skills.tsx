@@ -6,7 +6,7 @@ import { AnimatedSection } from "./animated-section"
 const skillCategories = [
   {
     title: "Core Expertise",
-    skills: ["Computer Vision", "Depth Modeling", "AI/ML Systems", "Enterprise Software", "Systems Architecture"],
+    skills: ["Computer Vision", "Depth Estimation", "3D Reconstruction", "Edge AI", "AI/ML Systems", "Systems Architecture"],
   },
   {
     title: "Platforms & Tools",
@@ -14,7 +14,7 @@ const skillCategories = [
   },
   {
     title: "Technical",
-    skills: ["Python", "Cloud Infrastructure", "GIS/Geospatial", "Embedded Systems", "Full-Stack Development"],
+    skills: ["Python", "Cloud Infrastructure", "GIS/Geospatial", "Embedded Systems", "Full-Stack Development", "Enterprise Software"],
   },
   {
     title: "Certifications",
@@ -43,9 +43,9 @@ export function Skills() {
 
       <div className="max-w-6xl mx-auto lg:ml-[200px] 2xl:mx-auto">
         <AnimatedSection>
-          <span className="inline-block text-accent-foreground font-mono text-xs uppercase tracking-widest mb-4">
+          <h2 className="inline-block text-accent-foreground font-mono text-xs uppercase tracking-widest mb-4">
             Skills & Capabilities
-          </span>
+          </h2>
         </AnimatedSection>
 
         <div className="grid md:grid-cols-2 gap-12 mt-12">
