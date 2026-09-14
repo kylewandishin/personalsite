@@ -19,7 +19,7 @@ export const person = {
   name: "Kyle Wandishin",
   givenName: "Kyle",
   familyName: "Wandishin",
-  jobTitle: "Co-founder & Chief Technology Officer",
+  jobTitle: "Co-Founder & Chief Technology Officer",
   shortTitle: "Co-founder & CTO",
   email: "kyle@arterial.us",
   phone: "+1-720-800-2900",
