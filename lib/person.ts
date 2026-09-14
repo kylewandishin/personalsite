@@ -7,7 +7,7 @@
  * person. Keep this file in step with Wikidata Q139827048 and the Person node on
  * https://arterial.us/company.
  */
-export const SITE_URL = "https://kyle.wandishin.com"
+export const SITE_URL = "https://kylewandishin.com"
 export const PERSON_ID = `${SITE_URL}/#person`
 export const WEBSITE_ID = `${SITE_URL}/#website`
 export const HEADSHOT_ID = `${SITE_URL}/#headshot`
